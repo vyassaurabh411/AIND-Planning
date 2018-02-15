@@ -211,8 +211,10 @@ class AirCargoProblem(Problem):
         executed.
         """
         # TODO implement (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
+        pos_list = decode_state(node.state, self.state_map).pos
         count = 0
-        return count
+        count = sum([pos in self.goal for pos in pos_list])
+        return len(self.goal) - count
 
 
 def air_cargo_p1() -> AirCargoProblem:
